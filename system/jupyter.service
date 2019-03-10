@@ -1,0 +1,17 @@
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/home/freddie/network-connection-utils/system/start_jupyter.sh > /home/freddie/jupyter/jupyter.log 2>&1
+User=freddie
+Group=freddie
+WorkingDirectory=/home/freddie/jupyter
+Restart=always
+RestartSec=10
+Environment=PATH=/home/freddie/.pyenv/shims:/home/freddie/.pyenv/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+SyslogIdentifier=jupyter_notebook
+
+[Install]
+WantedBy=multi-user.target
