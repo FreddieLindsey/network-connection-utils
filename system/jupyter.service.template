@@ -1,0 +1,17 @@
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=${PWD}/start_jupyter.sh
+User=${USER}
+Group=${USER}
+WorkingDirectory=${PWD}/../jupyter
+Restart=always
+RestartSec=10
+Environment=PATH=${PATH}
+SyslogIdentifier=jupyter_notebook
+
+[Install]
+WantedBy=multi-user.target
